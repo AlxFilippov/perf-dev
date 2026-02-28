@@ -222,7 +222,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "1199"
+    "wordCount": "1222"
   }]
   </script>
 
@@ -606,7 +606,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2026-02-20T07:07:07&#43;01:00">20 февраля 2026</time><span class="px-2 text-primary-500">&middot;</span><span>1199 слов</span><span class="px-2 text-primary-500">&middot;</span><span title="Время чтения">6 минут</span>
+      <time datetime="2026-02-20T07:07:07&#43;01:00">20 февраля 2026</time><span class="px-2 text-primary-500">&middot;</span><span>1222 слов</span><span class="px-2 text-primary-500">&middot;</span><span title="Время чтения">6 минут</span>
     
 
     
@@ -1094,8 +1094,8 @@
 <ul>
 <li><strong>anim_ms</strong> время <code>animation</code> в кадре</li>
 <li><strong>layout_ms</strong> время <code>layout</code> в кадре</li>
-<li><strong>sync_ms</strong> Время синхронизации в <strong>RenderThread</strong> на <code>GPU</code></li>
-<li><strong>draw_ms</strong> Время отрисовки в <strong>RenderThread</strong> на <code>GPU</code></li>
+<li><strong>sync_ms</strong> Время синхронизации в <strong>RenderThread</strong></li>
+<li><strong>draw_ms</strong> Время отрисовки в <strong>RenderThread</strong></li>
 </ul>
 
 <h5 class="relative group">Анализ
@@ -1107,9 +1107,11 @@
     </span>
     
 </h5>
-<blockquote ><ul>
-<li>Посмотрев на длительность <code>layout/animation</code> в таблице можно сделать вывод, что иерархия представлений сильно перегружена раз эти методы занимают львиную долю длительности кадра.</li>
-<li>Как вариант решения - упрощать разметку и убирать вложенность отдельный представлений.</li>
+<blockquote ><p>Уточнение : Флоу записи трейса - это скроллинг ленты главного экрана приложения.</p>
+</blockquote><blockquote ><ul>
+<li>Посмотрите на длительность <code>layout/animation</code> в таблице.</li>
+<li>При идеальной длительности <strong>полного цикла</strong> кадра в <code>16ms</code> для <code>60Hz</code> и <code>8.33ms</code> для <code>120Hz</code> данные подсказывают, что иерархия представлений сильно перегружена или в один момент времени выполняются сразу несколько анимаций.</li>
+<li>Как вариант решения - оптимизировать представления и количество анимаций в единицу времени.</li>
 </ul>
 </blockquote>
 <h5 class="relative group">Найдем блокировки Main потока через <strong>Perfetto SQL</strong>

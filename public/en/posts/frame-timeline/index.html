@@ -222,7 +222,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "1286"
+    "wordCount": "1337"
   }]
   </script>
 
@@ -669,7 +669,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2026-02-20T07:07:07&#43;01:00">20 February 2026</time><span class="px-2 text-primary-500">&middot;</span><span>1286 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">7 mins</span>
+      <time datetime="2026-02-20T07:07:07&#43;01:00">20 February 2026</time><span class="px-2 text-primary-500">&middot;</span><span>1337 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">7 mins</span>
     
 
     
@@ -1173,10 +1173,10 @@ However, for the fast and surgical approach, we use <strong>Perfetto SQL</strong
 <p><strong>layout_ms</strong> : layout time in the frame.</p>
 </li>
 <li>
-<p><strong>sync_ms</strong> : synchronization time on the RenderThread (GPU).</p>
+<p><strong>sync_ms</strong> : synchronization time on the RenderThread.</p>
 </li>
 <li>
-<p><strong>draw_ms</strong> : rendering execution time on the RenderThread (GPU).</p>
+<p><strong>draw_ms</strong> : rendering execution time on the RenderThread.</p>
 </li>
 </ul>
 
@@ -1189,15 +1189,13 @@ However, for the fast and surgical approach, we use <strong>Perfetto SQL</strong
     </span>
     
 </h4>
-<ul>
-<li>
-<p>High <code>layout_ms</code> or <code>anim_ms</code> values suggest an overloaded View hierarchy.</p>
-</li>
-<li>
-<p>Solution: Simplify the layout, reduce View nesting, or optimize Compose recompositions.</p>
-</li>
+<blockquote ><p><strong>Context</strong>: The trace was captured while scrolling the main feed of the application.</p>
+</blockquote><blockquote ><ul>
+<li>Analyze the <code>layout/animation</code> durations in the table.</li>
+<li>Given the <strong>total frame budget</strong> of <code>16.6ms</code> for 60Hz and a strict <code>8.33ms</code> for 120Hz, these metrics suggest that the View hierarchy is heavily overloaded or that multiple animations are being triggered simultaneously.</li>
+<li><strong>Potential Solution</strong>: Optimize the View hierarchy and limit the number of concurrent animations per frame to stay within the VSync budget.</li>
 </ul>
-
+</blockquote>
 <h4 class="relative group">Finding Main Thread Contentions via SQL
     <div id="finding-main-thread-contentions-via-sql" class="anchor"></div>
     
