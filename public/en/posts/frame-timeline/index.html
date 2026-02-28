@@ -1,0 +1,1492 @@
+<!doctype html>
+<html
+  lang="en"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="light"
+  data-auto-appearance="true"><head><script src="/perf-dev/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=perf-dev/livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  
+    <meta http-equiv="content-language" content="en">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color">
+
+  
+  
+    <title>Overview Frame Timeline &middot; Blowfish</title>
+    <meta name="title" content="Overview Frame Timeline &middot; Blowfish">
+  
+
+  
+  
+  
+  
+  
+  <link rel="canonical" href="http://localhost:1313/perf-dev/en/posts/frame-timeline/">
+  
+
+  
+  
+    <meta name="author" content="Aleksandr">
+  
+  
+    
+      
+        
+          <link href="https://www.linkedin.com/in/alfilippov/" rel="me">
+        
+      
+    
+  
+
+  
+  <meta property="og:url" content="http://localhost:1313/perf-dev/en/posts/frame-timeline/">
+  <meta property="og:site_name" content="Blowfish">
+  <meta property="og:title" content="Overview Frame Timeline">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-02-20T07:07:07+01:00">
+    <meta property="article:modified_time" content="2026-02-20T07:07:07+01:00">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Overview Frame Timeline">
+
+  
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+  
+    
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/perf-dev/css/main.bundle.min.f41394a5c0e10c1cf8a65888f77e21ec279d86842cd26f2d94fc9956dfaa3240ba32a773ef895535ec8fa317a1eeeaeeecb64add401d2082d37bf1031716a0f9.css"
+    integrity="sha512-9BOUpcDhDBz4pliI934h7CedhoQs0m8tlPyZVt&#43;qMkC6Mqdz74lVNeyPoxeh7uru7LZK3UAdIILTe/EDFxag&#43;Q==">
+
+  
+  
+  <script
+    type="text/javascript"
+    src="/perf-dev/js/appearance.min.6f41174b3a05b680820fe08cadbfa5fb7a7ca347b76a0955cdc68b9d8aca1ce24f0547e138cea33bcc7904d551a90afcb1cc7f2d9fe8557075d501419046c08c.js"
+    integrity="sha512-b0EXSzoFtoCCD&#43;CMrb&#43;l&#43;3p8o0e3aglVzcaLnYrKHOJPBUfhOM6jO8x5BNVRqQr8scx/LZ/oVXB11QFBkEbAjA=="></script>
+  
+  
+  
+  
+  
+  
+    
+    <script src="/perf-dev/lib/zoom/zoom.min.umd.a527109b68c082a70f3697716dd72a9d5aa8b545cf800cecbbc7399f2ca6f6e0ce3e431f2062b48bbfa47c9ea42822714060bef309be073f49b9c0e30d318d7b.js" integrity="sha512-pScQm2jAgqcPNpdxbdcqnVqotUXPgAzsu8c5nyym9uDOPkMfIGK0i7&#43;kfJ6kKCJxQGC&#43;8wm&#43;Bz9JucDjDTGNew=="></script>
+  
+
+  
+  
+  
+    
+  
+  
+    
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    <script
+      defer
+      type="text/javascript"
+      id="script-bundle"
+      src="/perf-dev/js/main.bundle.min.174bcf70e6e1263b171d57722e12e947c094a38b89ba10267b8744db900c25af6426a478c44554553ac180127863a0014c61409cb86b8052ec370dd7cc92d593.js"
+      integrity="sha512-F0vPcObhJjsXHVdyLhLpR8CUo4uJuhAme4dE25AMJa9kJqR4xEVUVTrBgBJ4Y6ABTGFAnLhrgFLsNw3XzJLVkw=="
+      data-copy="Copy"
+      data-copied="Copied"></script>
+  
+
+  
+  
+
+<script src="/perf-dev/lib/jquery/jquery.slim.min.b0dca576e87d7eaa5850ae4e61759c065786cdb6489d68fcc82240539eebd5da522bdb4fda085ffd245808c8fe2acb2516408eb774ef26b5f6015fc6737c0ea8.js" integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj&#43;KsslFkCOt3TvJrX2AV/Gc3wOqA=="></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/perf-dev/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/perf-dev/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/perf-dev/favicon-16x16.png">
+    <link rel="manifest" href="/perf-dev/site.webmanifest">
+  
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Posts",
+    "name": "Overview Frame Timeline",
+    "headline": "Overview Frame Timeline",
+    
+    "inLanguage": "en",
+    "url" : "http://localhost:1313/perf-dev/en/posts/frame-timeline/",
+    "author" : {
+      "@type": "Person",
+      "name": "Aleksandr"
+    },
+    "copyrightYear": "2026",
+    "dateCreated": "2026-02-20T07:07:07\u002b01:00",
+    "datePublished": "2026-02-20T07:07:07\u002b01:00",
+    
+    "dateModified": "2026-02-20T07:07:07\u002b01:00",
+    
+    
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "1286"
+  }]
+  </script>
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <body class="flex flex-col h-screen m-auto leading-7 max-w-7xl px-6 sm:px-14 md:px-24 lg:px-32 text-lg bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600">
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content">
+        <span class="font-bold text-primary-600 pe-2 dark:text-primary-400">&darr;</span>
+        Skip to main content
+      </a>
+    </div>
+    
+    
+      <div class="min-h-[148px]"></div>
+<div class="fixed inset-x-0 z-100">
+  <div
+    id="menu-blur"
+    class="absolute opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl shadow-2xl"></div>
+  <div class="relative m-auto leading-7 max-w-7xl px-6 sm:px-14 md:px-24 lg:px-32">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div
+  class="main-menu flex items-center justify-between py-6 md:justify-start gap-x-3 pt-[2px] pr-2 md:pr-4 pb-[3px] pl-0">
+  
+  
+
+  <div class="flex flex-1 items-center justify-between">
+    <nav class="flex space-x-3">
+      
+        <a href="/perf-dev/en/" class="text-base font-medium">
+          Blowfish
+        </a>
+      
+    </nav>
+    
+  <nav class="hidden md:flex items-center gap-x-5 md:ml-12 h-12">
+    
+      
+        
+  <a
+  href="/perf-dev/en/posts/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="Posts"
+  title="Posts">
+  
+  
+    <p class="text-base font-medium">
+      Posts
+    </p>
+  
+</a>
+
+
+
+      
+    
+
+    
+  <div>
+    <div class="cursor-pointer flex items-center nested-menu">
+      <span class="me-1">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+    <path fill="currentColor" d="M0 128C0 92.7 28.7 64 64 64H256h48 16H576c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H320 304 256 64c-35.3 0-64-28.7-64-64V128zm320 0V384H576V128H320zM178.3 175.9c-3.2-7.2-10.4-11.9-18.3-11.9s-15.1 4.7-18.3 11.9l-64 144c-4.5 10.1 .1 21.9 10.2 26.4s21.9-.1 26.4-10.2l8.9-20.1h73.6l8.9 20.1c4.5 10.1 16.3 14.6 26.4 10.2s14.6-16.3 10.2-26.4l-64-144zM160 233.2L179 276H141l19-42.8zM448 164c11 0 20 9 20 20v4h44 16c11 0 20 9 20 20s-9 20-20 20h-2l-1.6 4.5c-8.9 24.4-22.4 46.6-39.6 65.4c.9 .6 1.8 1.1 2.7 1.6l18.9 11.3c9.5 5.7 12.5 18 6.9 27.4s-18 12.5-27.4 6.9l-18.9-11.3c-4.5-2.7-8.8-5.5-13.1-8.5c-10.6 7.5-21.9 14-34 19.4l-3.6 1.6c-10.1 4.5-21.9-.1-26.4-10.2s.1-21.9 10.2-26.4l3.6-1.6c6.4-2.9 12.6-6.1 18.5-9.8l-12.2-12.2c-7.8-7.8-7.8-20.5 0-28.3s20.5-7.8 28.3 0l14.6 14.6 .5 .5c12.4-13.1 22.5-28.3 29.8-45H448 376c-11 0-20-9-20-20s9-20 20-20h52v-4c0-11 9-20 20-20z"/></svg></span>
+      </span>
+      <div
+        class="text-sm font-medium hover:text-primary-600 dark:hover:text-primary-400"
+        title="Overview Frame Timeline">EN</div>
+    </div>
+    <div class="absolute menuhide">
+      <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+        <div class="flex flex-col space-y-3">
+          
+            <a href="/perf-dev/en/posts/frame-timeline/" class="flex items-center">
+              <p
+                class="text-sm font-sm hover:text-primary-600 dark:hover:text-primary-400"
+                title="Overview Frame Timeline">
+                EN
+              </p>
+            </a>
+          
+            <a href="/perf-dev/ru/posts/frame-timeline/" class="flex items-center">
+              <p
+                class="text-sm font-sm hover:text-primary-600 dark:hover:text-primary-400"
+                title="Обзор Frame Timeline">
+                RU
+              </p>
+            </a>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    
+
+    
+      <button
+        id="search-button"
+        aria-label="Search"
+        class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+        title="Search (/)">
+        <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+      </button>
+    
+
+    
+      <div class=" flex items-center">
+        <button
+          id="appearance-switcher"
+          aria-label="Dark mode switcher"
+          type="button"
+          class="text-base hover:text-primary-600 dark:hover:text-primary-400">
+          <div class="flex items-center justify-center dark:hidden">
+            <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+          </div>
+          <div class="items-center justify-center hidden dark:flex">
+            <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+          </div>
+        </button>
+      </div>
+    
+  </nav>
+
+    
+  <div class="flex md:hidden items-center gap-x-5 md:ml-12 h-12">
+    <span></span>
+
+    
+  <div>
+    <div class="cursor-pointer flex items-center nested-menu">
+      <span class="me-1">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+    <path fill="currentColor" d="M0 128C0 92.7 28.7 64 64 64H256h48 16H576c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H320 304 256 64c-35.3 0-64-28.7-64-64V128zm320 0V384H576V128H320zM178.3 175.9c-3.2-7.2-10.4-11.9-18.3-11.9s-15.1 4.7-18.3 11.9l-64 144c-4.5 10.1 .1 21.9 10.2 26.4s21.9-.1 26.4-10.2l8.9-20.1h73.6l8.9 20.1c4.5 10.1 16.3 14.6 26.4 10.2s14.6-16.3 10.2-26.4l-64-144zM160 233.2L179 276H141l19-42.8zM448 164c11 0 20 9 20 20v4h44 16c11 0 20 9 20 20s-9 20-20 20h-2l-1.6 4.5c-8.9 24.4-22.4 46.6-39.6 65.4c.9 .6 1.8 1.1 2.7 1.6l18.9 11.3c9.5 5.7 12.5 18 6.9 27.4s-18 12.5-27.4 6.9l-18.9-11.3c-4.5-2.7-8.8-5.5-13.1-8.5c-10.6 7.5-21.9 14-34 19.4l-3.6 1.6c-10.1 4.5-21.9-.1-26.4-10.2s.1-21.9 10.2-26.4l3.6-1.6c6.4-2.9 12.6-6.1 18.5-9.8l-12.2-12.2c-7.8-7.8-7.8-20.5 0-28.3s20.5-7.8 28.3 0l14.6 14.6 .5 .5c12.4-13.1 22.5-28.3 29.8-45H448 376c-11 0-20-9-20-20s9-20 20-20h52v-4c0-11 9-20 20-20z"/></svg></span>
+      </span>
+      <div
+        class="text-sm font-medium hover:text-primary-600 dark:hover:text-primary-400"
+        title="Overview Frame Timeline">EN</div>
+    </div>
+    <div class="absolute menuhide">
+      <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+        <div class="flex flex-col space-y-3">
+          
+            <a href="/perf-dev/en/posts/frame-timeline/" class="flex items-center">
+              <p
+                class="text-sm font-sm hover:text-primary-600 dark:hover:text-primary-400"
+                title="Overview Frame Timeline">
+                EN
+              </p>
+            </a>
+          
+            <a href="/perf-dev/ru/posts/frame-timeline/" class="flex items-center">
+              <p
+                class="text-sm font-sm hover:text-primary-600 dark:hover:text-primary-400"
+                title="Обзор Frame Timeline">
+                RU
+              </p>
+            </a>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    
+
+    
+      <button
+        id="search-button-mobile"
+        aria-label="Search"
+        class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+        title="Search (/)">
+        <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+      </button>
+    
+
+    
+      <button
+        id="appearance-switcher-mobile"
+        aria-label="Dark mode switcher"
+        type="button"
+        class="text-base hover:text-primary-600 dark:hover:text-primary-400 me-1">
+        <div class="flex items-center justify-center dark:hidden">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+        </div>
+        <div class="items-center justify-center hidden dark:flex">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+        </div>
+      </button>
+    
+  </div>
+
+  </div>
+  
+  <div class="-my-2 md:hidden">
+    <div id="menu-button" class="block">
+      
+        <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+</span>
+        </div>
+        <div
+          id="menu-wrapper"
+          class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50 pt-[5px]">
+          <ul
+            class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none text-end max-w-7xl">
+            <li id="menu-close-button">
+              <span
+                class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
+                <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+              </span>
+            </li>
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/perf-dev/en/posts/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="Posts"
+    title="Posts">
+    
+    
+      <p class="text-bg font-bg">
+        Posts
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+
+          </ul>
+          
+        </div>
+      
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+  </div>
+</div>
+
+
+<script
+  type="text/javascript"
+  src="/perf-dev/js/background-blur.min.605b3b942818f0ab5a717ae446135ec46b8ee5a2ad12ae56fb90dc2a76ce30c388f9fec8bcc18db15bd47e3fa8a09d779fa12aa9c184cf614a315bc72c6c163d.js"
+  integrity="sha512-YFs7lCgY8KtacXrkRhNexGuO5aKtEq5W&#43;5DcKnbOMMOI&#43;f7IvMGNsVvUfj&#43;ooJ13n6EqqcGEz2FKMVvHLGwWPQ=="
+  data-blur-id="menu-blur"></script>
+
+    
+    <div class="relative flex flex-col grow">
+      <main id="main-content" class="grow">
+        
+  
+  <article>
+    
+    
+      
+      
+      
+      
+        
+
+
+
+
+
+
+
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+
+
+  
+    
+    
+      
+      
+    
+  
+
+
+
+
+
+    <div id="hero" class="h-[150px] md:h-[200px]"></div>
+  
+  <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom">
+    
+    
+    
+    <img
+      id="background-image"
+      src="/perf-dev/en/posts/frame-timeline/background_frametimeline_hu_4a5f11ce7b0a6424.jpg"
+      role="presentation"
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+      class="absolute inset-0 w-full h-full object-cover"
+      >
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal"></div>
+    <div
+      class="absolute inset-0 opacity-60 bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal"></div>
+  </div>
+
+  
+      
+    
+
+    
+    <header id="single_header" class="mt-5 max-w-prose">
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        Overview Frame Timeline
+      </h1>
+      <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+        
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2026-02-20T07:07:07&#43;01:00">20 February 2026</time><span class="px-2 text-primary-500">&middot;</span><span>1286 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">7 mins</span>
+    
+
+    
+    
+  </div>
+
+  
+
+  
+  
+
+  
+  
+
+
+
+      </div>
+      
+        
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+    
+    
+<div class="flex author">
+  
+    
+    
+      
+    
+    
+      
+      
+      
+        
+        
+        
+      
+      <img
+        class="!mt-0 !mb-0 h-24 w-24 rounded-full me-4"
+        width="96"
+        height="96"
+        alt="Aleksandr"
+        src="/perf-dev/img/author_hu_ee898aee071a5f3b.jpg"
+        data-zoom-src="/perf-dev/img/author_hu_dc7263cee0839272.jpg">
+    
+  
+  <div class="place-self-center">
+    
+      <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+        Author
+      </div>
+      <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+        Aleksandr
+      </div>
+    
+    
+      <div class="text-sm text-neutral-700 dark:text-neutral-400">Just fun</div>
+    
+    <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://www.linkedin.com/in/alfilippov/"
+          target="_blank"
+          aria-label="Linkedin"
+          title="Linkedin"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+</span></span></a
+        >
+      
+    
+  </div>
+
+</div>
+  </div>
+</div>
+
+  
+
+  
+
+  
+    <div class="mb-5"></div>
+  
+
+      
+    </header>
+
+    
+    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+      
+      
+      
+      
+      
+        <div class="order-first lg:ml-auto px-0 lg:order-last lg:ps-8 lg:max-w-2xs">
+          <div class="toc ps-5 print:hidden lg:sticky lg:top-[140px]">
+            
+              <details
+  open
+  id="TOCView"
+  class="toc-right mt-0 overflow-y-auto overscroll-contain scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600 rounded-lg -ms-5 ps-5 pe-2 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 -ms-5 ps-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted border-s-1 -ms-5 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#frame-timeline">Frame Timeline</a>
+      <ul>
+        <li><a href="#quick-primer">Quick Primer:</a></li>
+        <li><a href="#anatomy-of-the-frame-timeline">Anatomy of the Frame Timeline</a></li>
+      </ul>
+    </li>
+    <li><a href="#what-affects-frame-duration">What Affects Frame Duration?</a>
+      <ul>
+        <li><a href="#breakdown">Breakdown</a>
+          <ul>
+            <li></li>
+            <li><a href="#how-to-find-problematic-areas">How to Find Problematic Areas?</a></li>
+            <li><a href="#what-interests-us-in-the-app-ui-layer">What Interests Us in the App UI Layer?</a></li>
+            <li><a href="#analyzing-traversal-and-renderthread-duration">Analyzing Traversal and RenderThread Duration</a></li>
+            <li><a href="#results">Results</a></li>
+            <li><a href="#table-breakdown">Table Breakdown</a></li>
+            <li><a href="#analysis">Analysis</a></li>
+            <li><a href="#finding-main-thread-contentions-via-sql">Finding Main Thread Contentions via SQL</a></li>
+            <li><a href="#breakdown-1">Breakdown</a></li>
+            <li><a href="#complexity-of-integration-and-interaction">Complexity of Integration and Interaction</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#key-takeaways">Key Takeaways</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg -ms-5 ps-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 -ms-5 ps-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 border-s-1 -ms-5 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#frame-timeline">Frame Timeline</a>
+      <ul>
+        <li><a href="#quick-primer">Quick Primer:</a></li>
+        <li><a href="#anatomy-of-the-frame-timeline">Anatomy of the Frame Timeline</a></li>
+      </ul>
+    </li>
+    <li><a href="#what-affects-frame-duration">What Affects Frame Duration?</a>
+      <ul>
+        <li><a href="#breakdown">Breakdown</a>
+          <ul>
+            <li></li>
+            <li><a href="#how-to-find-problematic-areas">How to Find Problematic Areas?</a></li>
+            <li><a href="#what-interests-us-in-the-app-ui-layer">What Interests Us in the App UI Layer?</a></li>
+            <li><a href="#analyzing-traversal-and-renderthread-duration">Analyzing Traversal and RenderThread Duration</a></li>
+            <li><a href="#results">Results</a></li>
+            <li><a href="#table-breakdown">Table Breakdown</a></li>
+            <li><a href="#analysis">Analysis</a></li>
+            <li><a href="#finding-main-thread-contentions-via-sql">Finding Main Thread Contentions via SQL</a></li>
+            <li><a href="#breakdown-1">Breakdown</a></li>
+            <li><a href="#complexity-of-integration-and-interaction">Complexity of Integration and Interaction</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#key-takeaways">Key Takeaways</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+
+
+            
+          </div>
+        </div>
+      
+
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+
+        <div class="article-content max-w-prose mb-20">
+          
+<h1 class="relative group">Frame Timeline: An Entry Point for App Performance Analysis
+    <div id="frame-timeline-an-entry-point-for-app-performance-analysis" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#frame-timeline-an-entry-point-for-app-performance-analysis" aria-label="Anchor">#</a>
+    </span>
+    
+</h1>
+<p><strong>Goal:</strong> This article provides an introductory overview of using Frame Timeline to analyze performance issues in Android applications. Frame Timeline is one of the primary starting points for identifying and troubleshooting UI bottlenecks.</p>
+<blockquote ><p><strong>Disclaimer:</strong>
+This guide assumes you have a basic familiarity with Android traces and <code>perfetto-trace</code>. If not, here is a list of materials to check out before moving forward (or don&rsquo;t—manage your own life!):</p>
+<ul>
+<li><a href="https://perfetto.dev/docs/getting-started/start-using-perfetto"  target="_blank">Tracing 101</a> — The basics: what tracing is and why it’s needed.</li>
+<li><a href="https://perfetto.dev/docs/data-sources/frametimeline"  target="_blank">FrameTimeline: Jank detection</a> — Understanding frame composition.</li>
+</ul>
+</blockquote><hr>
+
+<h2 class="relative group">Frame Timeline
+    <div id="frame-timeline" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#frame-timeline" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    alt="Photo"
+    width="3058"
+    height="798"
+    src="/perf-dev/en/posts/frame-timeline/frame-timeline_hu_9cb17bc6cda4fc17.png"
+    srcset="/perf-dev/en/posts/frame-timeline/frame-timeline_hu_9cb17bc6cda4fc17.png 800w, /perf-dev/en/posts/frame-timeline/frame-timeline_hu_1779589f0779723e.png 1280w"
+    sizes="(min-width: 768px) 50vw, 65vw"
+    data-zoom-src="/perf-dev/en/posts/frame-timeline/frame-timeline.png"></figure>
+<p>This is an Android tool that provides information about the sequence of frames and their duration. It allows you to detect <strong>Jank</strong> — dropped frames in animations and the user interface that lead to a negative user experience.</p>
+
+<h3 class="relative group">Quick Primer:
+    <div id="quick-primer" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#quick-primer" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<ul>
+<li><strong>Expected Timeline</strong> — Displays the ideal sequence of frames without delays.</li>
+<li><strong>Actual Timeline</strong> — Displays the real sequence of frames, where red sections indicate delays exceeding the VSync budget (e.g., 16.6ms for 60Hz).</li>
+</ul>
+
+<h3 class="relative group">Anatomy of the Frame Timeline
+    <div id="anatomy-of-the-frame-timeline" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#anatomy-of-the-frame-timeline" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    alt="App-Timelines"
+    width="961"
+    height="991"
+    src="/perf-dev/en/posts/frame-timeline/app-timelines_hu_b34503a30339003c.png"
+    srcset="/perf-dev/en/posts/frame-timeline/app-timelines_hu_b34503a30339003c.png 800w, /perf-dev/en/posts/frame-timeline/app-timelines.png 1280w"
+    sizes="(min-width: 768px) 50vw, 65vw"
+    data-zoom-src="/perf-dev/en/posts/frame-timeline/app-timelines.png"></figure>
+<p><strong>General Workflow</strong></p>
+<ul>
+<li>VSync → DisplayEventReceiver receives the event.</li>
+<li>Main Thread → Choreographer (scheduling) → ViewRootImpl (traversing the UI) → Recomposer (calculating Compose state changes) → AndroidComposeView rendering into the <code>DisplayList</code>.</li>
+<li>Sync Phase → HardwareRenderer blocks the Main Thread to hand over data to the <code>RenderThread</code>.</li>
+<li>RenderThread → DrawFrameTask executes draw commands via <code>Skia/Vulkan</code>.</li>
+<li>System Layer → SurfaceFlinger handles composition and pushes the buffer to the display.</li>
+</ul>
+<blockquote ><p><strong>Source Code References</strong></p>
+<ul>
+<li><a href="https://cs.android.com/android/platform/superproject/main/&#43;/main:frameworks/native/services/displayservice/include/displayservice/DisplayEventReceiver.h"  target="_blank">DisplayEventReceiver</a>: Receives VSync from SurfaceFlinger. Starts the cycle.</li>
+<li><a href="https://cs.android.com/android/platform/superproject/main/&#43;/main:frameworks/base/core/java/android/view/Choreographer.java"  target="_blank">Choreographer</a>: doFrame: Input, Animation, and Traversal phases.</li>
+<li><a href="https://cs.android.com/android/platform/superproject/main/&#43;/main:frameworks/base/core/java/android/view/ViewRootImpl.java"  target="_blank">ViewRootImpl</a>: performTraversals: Starts Measure/Layout/Draw for the entire hierarchy.</li>
+<li><a href="https://cs.android.com/androidx/platform/frameworks/support/&#43;/androidx-main:compose/runtime/runtime/src/commonMain/kotlin/androidx/compose/runtime/Recomposer.kt"  target="_blank">Recomposer</a>: runRecompositionAndApplyChanges: Calculates snapshot state deltas.</li>
+<li><a href="https://cs.android.com/androidx/platform/frameworks/support/&#43;/androidx-main:compose/ui/ui/src/androidMain/kotlin/androidx/compose/ui/platform/ComposeView.android.kt"  target="_blank">ComposeView</a>: The bridge between Compose LayoutNode and the View system.</li>
+<li><a href="https://developer.android.com/reference/android/graphics/HardwareRenderer"  target="_blank">HardwareRenderer</a>: syncFrameState: Transfers the DisplayList to the RenderThread.</li>
+<li><a href="https://source.android.com/docs/core/graphics/surfaceflinger-windowmanager"  target="_blank">SurfaceFlinger</a>: Composites ready buffers.</li>
+</ul>
+</blockquote><hr>
+
+<h2 class="relative group">What Affects Frame Duration?
+    <div id="what-affects-frame-duration" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#what-affects-frame-duration" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>Every performance issue has an &ldquo;address&rdquo; — the specific place where it all started.</p>
+
+<h3 class="relative group">Breakdown
+    <div id="breakdown" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#breakdown" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>Before diving into the app code, you should <strong>categorize</strong> the involved classes into layers. This helps because:</p>
+<ol>
+<li>It simplifies the overall understanding of a feature&rsquo;s architecture.</li>
+<li>It makes it easier to pinpoint the zone of <strong>low-performance</strong> code.</li>
+<li>It clarifies who to consult or what documentation to read for further analysis.</li>
+</ol>
+
+<h5 class="relative group">How to Cluster the Layers?
+    <div id="how-to-cluster-the-layers" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#how-to-cluster-the-layers" aria-label="Anchor">#</a>
+    </span>
+    
+</h5>
+<p>For most cases, the system can be divided into:</p>
+<ul>
+<li><strong>System UI Layer</strong> — Classes responsible for frame display, rendering, and composition between your app and the OS.
+<figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    alt="Photo"
+    width="1296"
+    height="236"
+    src="/perf-dev/en/posts/frame-timeline/platform_ui_hu_f81c1c0afe15b7.jpg"
+    srcset="/perf-dev/en/posts/frame-timeline/platform_ui_hu_f81c1c0afe15b7.jpg 800w, /perf-dev/en/posts/frame-timeline/platform_ui_hu_5c43c14c2bfb2e03.jpg 1280w"
+    sizes="(min-width: 768px) 50vw, 65vw"
+    data-zoom-src="/perf-dev/en/posts/frame-timeline/platform_ui.jpg"></figure>
+</li>
+<li><strong>System DATA Layer</strong> — Classes responsible for data movement and utilization between the app and the system.
+<figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    alt="Photo"
+    width="1296"
+    height="115"
+    src="/perf-dev/en/posts/frame-timeline/platform_data_hu_7fd3a7272ba3a7cd.jpg"
+    srcset="/perf-dev/en/posts/frame-timeline/platform_data_hu_7fd3a7272ba3a7cd.jpg 800w, /perf-dev/en/posts/frame-timeline/platform_data_hu_85f7bffa466b8339.jpg 1280w"
+    sizes="(min-width: 768px) 50vw, 65vw"
+    data-zoom-src="/perf-dev/en/posts/frame-timeline/platform_data.jpg"></figure>
+</li>
+<li><strong>App DATA Layer</strong> — Classes you use to move data within your own application.
+<figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    alt="Photo"
+    width="1304"
+    height="288"
+    src="/perf-dev/en/posts/frame-timeline/application_data_hu_5b9215f07ee0b10b.png"
+    srcset="/perf-dev/en/posts/frame-timeline/application_data_hu_5b9215f07ee0b10b.png 800w, /perf-dev/en/posts/frame-timeline/application_data_hu_8ac323d0db928124.png 1280w"
+    sizes="(min-width: 768px) 50vw, 65vw"
+    data-zoom-src="/perf-dev/en/posts/frame-timeline/application_data.png"></figure>
+</li>
+<li><strong>App UI Layer</strong> — Classes used to draw and composite the &ldquo;pretty stuff&rdquo; your designers requested.
+<figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    alt="Photo"
+    width="1296"
+    height="401"
+    src="/perf-dev/en/posts/frame-timeline/application_ui_hu_5da1b67cde6f4c6b.jpg"
+    srcset="/perf-dev/en/posts/frame-timeline/application_ui_hu_5da1b67cde6f4c6b.jpg 800w, /perf-dev/en/posts/frame-timeline/application_ui_hu_c69867ea04b1b090.jpg 1280w"
+    sizes="(min-width: 768px) 50vw, 65vw"
+    data-zoom-src="/perf-dev/en/posts/frame-timeline/application_ui.jpg"></figure>
+</li>
+</ul>
+
+<h5 class="relative group">Bottom-Up vs. Top-Down Analysis?
+    <div id="bottom-up-vs-top-down-analysis" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#bottom-up-vs-top-down-analysis" aria-label="Anchor">#</a>
+    </span>
+    
+</h5>
+<p>In most cases, it’s best to analyze the system <strong>Bottom-Up</strong>. This means analyzing the impact of your app&rsquo;s layers on the system layers. Typically, code written by engineering teams causes system-wide slowdowns, which in turn affects frame rendering speed. Most issues are hidden in the App Layer, so we&rsquo;ll start with the <strong>App UI Layer</strong>.</p>
+
+<h4 class="relative group">How to Find Problematic Areas?
+    <div id="how-to-find-problematic-areas" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#how-to-find-problematic-areas" aria-label="Anchor">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>If you see obvious &ldquo;red&rdquo; spots on the <strong>Frame Timeline</strong>, jump straight into a detailed search.</li>
+<li>If you prefer to spend your workday scrolling the timeline back and forth and diving into every single frame — I support that too!
+However, for the fast and surgical approach, we use <strong>Perfetto SQL</strong>. By querying Perfetto’s data tables, we can generate structured reports for deep analysis.</li>
+</ul>
+
+<h4 class="relative group">What Interests Us in the App UI Layer?
+    <div id="what-interests-us-in-the-app-ui-layer" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#what-interests-us-in-the-app-ui-layer" aria-label="Anchor">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>Main Thread contentions (locks).</li>
+<li>The duration of <code>traversal</code> (layout, measure, recomposition) and the subsequent execution on the <code>RenderThread</code>.</li>
+</ul>
+
+<h4 class="relative group">Analyzing Traversal and RenderThread Duration
+    <div id="analyzing-traversal-and-renderthread-duration" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#analyzing-traversal-and-renderthread-duration" aria-label="Anchor">#</a>
+    </span>
+    
+</h4>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">f</span><span class="p">.</span><span class="n">surface_frame_token</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">frame_id</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">f</span><span class="p">.</span><span class="n">dur</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1</span><span class="n">e6</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_frame_dur_ms</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">dur</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1</span><span class="n">e6</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">slice</span><span class="w"> </span><span class="n">s</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">WHERE</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">ts</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="n">ts</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">ts</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">ts</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="n">dur</span><span class="p">)</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">AND</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%animation%&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">anim_ms</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">dur</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1</span><span class="n">e6</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">slice</span><span class="w"> </span><span class="n">s</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">WHERE</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">ts</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="n">ts</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">ts</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">ts</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="n">dur</span><span class="p">)</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">AND</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;traversal&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">layout_ms</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">dur</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1</span><span class="n">e6</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">slice</span><span class="w"> </span><span class="n">s</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">WHERE</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">ts</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="n">ts</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">ts</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">ts</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="n">dur</span><span class="p">)</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">AND</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;syncFrameState&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">sync_ms</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">dur</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1</span><span class="n">e6</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">slice</span><span class="w"> </span><span class="n">s</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">WHERE</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">ts</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="n">ts</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">ts</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">ts</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="n">dur</span><span class="p">)</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">AND</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;DrawFrame%&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">draw_ms</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">actual_frame_timeline_slice</span><span class="w"> </span><span class="n">f</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="n">dur</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="n">e6</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">total_frame_dur_ms</span><span class="w"> </span><span class="k">DESC</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">LIMIT</span><span class="w"> </span><span class="mi">30</span></span></span></code></pre></div></div>
+
+<h4 class="relative group">Results
+    <div id="results" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#results" aria-label="Anchor">#</a>
+    </span>
+    
+</h4>
+<figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    alt="do_frame_met"
+    width="1456"
+    height="964"
+    src="/perf-dev/en/posts/frame-timeline/do_frame_met_hu_483cd3a695fd1a7d.png"
+    srcset="/perf-dev/en/posts/frame-timeline/do_frame_met_hu_483cd3a695fd1a7d.png 800w, /perf-dev/en/posts/frame-timeline/do_frame_met_hu_65ba1838bce943a3.png 1280w"
+    sizes="(min-width: 768px) 50vw, 65vw"
+    data-zoom-src="/perf-dev/en/posts/frame-timeline/do_frame_met.png"></figure>
+
+<h4 class="relative group">Table Breakdown
+    <div id="table-breakdown" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#table-breakdown" aria-label="Anchor">#</a>
+    </span>
+    
+</h4>
+<p>Let&rsquo;s look at the columns:</p>
+<ul>
+<li>
+<p><strong>anim_ms</strong> : animation time in the frame.</p>
+</li>
+<li>
+<p><strong>layout_ms</strong> : layout time in the frame.</p>
+</li>
+<li>
+<p><strong>sync_ms</strong> : synchronization time on the RenderThread (GPU).</p>
+</li>
+<li>
+<p><strong>draw_ms</strong> : rendering execution time on the RenderThread (GPU).</p>
+</li>
+</ul>
+
+<h4 class="relative group">Analysis
+    <div id="analysis" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#analysis" aria-label="Anchor">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>
+<p>High <code>layout_ms</code> or <code>anim_ms</code> values suggest an overloaded View hierarchy.</p>
+</li>
+<li>
+<p>Solution: Simplify the layout, reduce View nesting, or optimize Compose recompositions.</p>
+</li>
+</ul>
+
+<h4 class="relative group">Finding Main Thread Contentions via SQL
+    <div id="finding-main-thread-contentions-via-sql" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#finding-main-thread-contentions-via-sql" aria-label="Anchor">#</a>
+    </span>
+    
+</h4>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">SUBSTR</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">INSTR</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;owner &#39;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">INSTR</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; (&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">INSTR</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;owner &#39;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">owner_thread_name</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">t</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">blocked_thread</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="n">SUBSTR</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">SUBSTR</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">INSTR</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; at &#39;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4</span><span class="p">),</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="mi">1</span><span class="p">,</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">INSTR</span><span class="p">(</span><span class="n">SUBSTR</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">INSTR</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; at &#39;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="s1">&#39;(&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">method_name</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">lock_details</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">p</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">process_name</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">occurrence_count</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">SUM</span><span class="p">(</span><span class="n">dur</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1</span><span class="n">e6</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_dur_ms</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">MAX</span><span class="p">(</span><span class="n">dur</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1</span><span class="n">e6</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">max_single_dur_ms</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">slice</span><span class="w"> </span><span class="n">s</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">JOIN</span><span class="w"> </span><span class="n">thread_track</span><span class="w"> </span><span class="n">tt</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">track_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tt</span><span class="p">.</span><span class="n">id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">JOIN</span><span class="w"> </span><span class="n">thread</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="k">USING</span><span class="w"> </span><span class="p">(</span><span class="n">utid</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">JOIN</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="k">USING</span><span class="w"> </span><span class="p">(</span><span class="n">upid</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;monitor contention%&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">blocked_thread</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;ru.beru.android%&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">owner_thread_name</span><span class="p">,</span><span class="w"> </span><span class="n">blocked_thread</span><span class="p">,</span><span class="w"> </span><span class="n">lock_details</span><span class="p">,</span><span class="w"> </span><span class="n">process_name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">total_dur_ms</span><span class="w"> </span><span class="k">DESC</span></span></span></code></pre></div></div>
+
+<h5 class="relative group">Query Results
+    <div id="query-results" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#query-results" aria-label="Anchor">#</a>
+    </span>
+    
+</h5>
+<figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    alt="lock_contention"
+    width="2462"
+    height="952"
+    src="/perf-dev/en/posts/frame-timeline/sql_lock_contention_hu_589dc6bd08a8e5fb.png"
+    srcset="/perf-dev/en/posts/frame-timeline/sql_lock_contention_hu_589dc6bd08a8e5fb.png 800w, /perf-dev/en/posts/frame-timeline/sql_lock_contention_hu_f7cd8022f6324b38.png 1280w"
+    sizes="(min-width: 768px) 50vw, 65vw"
+    data-zoom-src="/perf-dev/en/posts/frame-timeline/sql_lock_contention.png"></figure>
+
+<h4 class="relative group">Breakdown
+    <div id="breakdown-1" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#breakdown-1" aria-label="Anchor">#</a>
+    </span>
+    
+</h4>
+<blockquote ><ul>
+<li>Take the first row with the highest total lock duration:</li>
+<li>Using a ViewPoolThread might trigger <a href="https://cs.android.com/android/platform/superproject/main/&#43;/main:frameworks/base/core/java/android/content/res/ResourcesImpl.java;l=1500;drc=61197364367c9e404c7da6900658f1b16c42d0da;bpv=0;bpt=1"  target="_blank">ResourceImpl.obtainStyledAttributes</a>, which calls <a href="https://cs.android.com/android/platform/superproject/&#43;/android-latest-release:frameworks/base/core/java/android/content/res/AssetManager.java;l=1266?q=AssetManager.java:1266&amp;sq="  target="_blank">AssetManager.applyStyle</a>. This method contains a synchronized block under the hood. Applying attributes from a background thread can inadvertently block the <code>Main Thread</code>.</li>
+<li>With access to the codebase, you can trace this to a specific function and optimize it. Reducing View-hierarchy-related calls from background threads often mitigates these contentions.</li>
+<li>View-hierarchy-related calls from background threads often mitigates these contentions.</li>
+</ul>
+</blockquote>
+<h4 class="relative group">Complexity of Integration and Interaction
+    <div id="complexity-of-integration-and-interaction" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#complexity-of-integration-and-interaction" aria-label="Anchor">#</a>
+    </span>
+    
+</h4>
+<p>Understanding individual classes is crucial, but real-world complexity arises from the interaction of multiple elements working simultaneously, especially on complex screens.
+An interface built by different teams might suffer from incompatible architectural approaches or accumulated technical debt, leading to unexpected latencies.</p>
+<ul>
+<li><strong>The Key Question</strong> : How do these components interact, and how does their combined work affect performance? This understanding is the foundation of advanced analysis.</li>
+</ul>
+<hr>
+
+<h2 class="relative group">Key Takeaways
+    <div id="key-takeaways" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#key-takeaways" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>By understanding how classes operate both in isolation and in tandem (within the app and across the system), you can narrow down the list of &ldquo;suspects&rdquo; to specific methods.</p>
+<ul>
+<li>
+<p><strong>Frame Timeline</strong> is your compass. It won&rsquo;t always give you a ready-made answer, but it points you in the right direction. Red sections in the Actual Timeline aren&rsquo;t a death sentence — they are a signal to start a deep-dive analysis.</p>
+</li>
+<li>
+<p><strong>Perfetto SQL</strong> is expertise automation. While manual trace scrolling is great for context, SQL queries turn a chaos of thousands of slices into a structured report. Grouping data by frame phases and hunting for monitor contention saves hours of tedious manual labor.</p>
+</li>
+<li>
+<p><strong>Clustering simplifies</strong> the search. Dividing the system into System vs. App layers helps filter out the noise. If the bottleneck is in layout_ms, focus on the App UI layer; if you see locks/contention, investigate thread interaction and shared resources.</p>
+</li>
+<li>
+<p><strong>Performance is a measurable metric</strong>. UI smoothness depends not just on your code, but on how efficiently it utilizes system resources. Optimizing a single synchronized block, flattening your View hierarchy, or reducing Recomposition counts can yield more &ldquo;bang for your buck&rdquo; than refactoring the entire business logic.</p>
+</li>
+</ul>
+<p>This article is just an introduction to the world of trace analysis. In upcoming posts, we will take a step-by-step look at each performance marker and the specialized tooling required to master them.</p>
+
+          
+          
+          
+        </div>
+        
+        
+
+        
+
+        
+
+      </div>
+
+      
+      
+        
+        
+          
+          
+        
+          
+          
+        
+        
+        
+        <script
+          type="text/javascript"
+          src="/perf-dev/js/page.min.54b6f4371722649edbe871e431d8670d670878c22be8f36e229fe53cc9b786fe25a834def5e6de621f7a3e37b72bc8cd73839aa5ed907ed6cbd45cd3e1b0fa20.js"
+          integrity="sha512-VLb0NxciZJ7b6HHkMdhnDWcIeMIr6PNuIp/lPMm3hv4lqDTe9ebeYh96Pje3K8jNc4Oape2QftbL1FzT4bD6IA=="
+          data-oid="views_posts/frame-timeline/index.md"
+          data-oid-likes="likes_posts/frame-timeline/index.md"></script>
+      
+    </section>
+
+    
+    <footer class="pt-8 max-w-prose print:hidden">
+      
+  
+    
+    
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600">
+      <div class="flex justify-between pt-3">
+        <span class="flex flex-col">
+          
+            <a
+              class="flex text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+              href="/perf-dev/en/posts/dict-sql-perfetto/">
+              <span class="leading-6">
+                <span class="inline-block rtl:rotate-180">&larr;</span>&ensp;Dict SQL Perfetto
+              </span>
+            </a>
+            
+              <span class="ms-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+                <time datetime="2026-02-18T07:07:07&#43;01:00">18 February 2026</time>
+              </span>
+            
+          
+        </span>
+        <span class="flex flex-col items-end">
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+      
+    </footer>
+  </article>
+
+        
+
+
+  
+
+
+
+
+
+
+<div
+  id="scroll-to-top"
+  class="fixed bottom-6 end-6 z-50 transform translate-y-4 opacity-0 duration-200">
+  <a
+    href="#the-top"
+    class="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="Scroll to top"
+    title="Scroll to top">
+    &uarr;
+  </a>
+</div>
+
+      </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+  
+  <div class="flex items-center justify-between">
+    
+    
+      <p class="text-sm text-neutral-500 dark:text-neutral-400">
+          &copy;
+          2026
+          Aleksandr
+      </p>
+    
+
+    
+    
+      <p class="text-xs text-neutral-500 dark:text-neutral-400">
+        
+        
+        Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+          href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+          href="https://blowfish.page/" target="_blank" rel="noopener noreferrer">Blowfish</a>
+      </p>
+    
+  </div>
+  
+    <script>
+      mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+        margin: 24,
+        background: "rgba(0,0,0,0.5)",
+        scrollOffset: 0,
+      });
+    </script>
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/perf-dev/js/process.min.ee03488f19c93c2efb199e2e3014ea5f3cb2ce7d45154adb3399a158cac27ca52831db249ede5bb602700ef87eb02434139de0858af1818ab0fb4182472204a4.js"
+    integrity="sha512-7gNIjxnJPC77GZ4uMBTqXzyyzn1FFUrbM5mhWMrCfKUoMdsknt5btgJwDvh&#43;sCQ0E53ghYrxgYqw&#43;0GCRyIEpA=="></script>
+  
+  
+</footer>
+<div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh] z-500"
+  data-url="http://localhost:1313/perf-dev/en/">
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800">
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Search"
+          tabindex="0">
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Close (Esc)">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+    </div>
+  </body>
+  
+</html>

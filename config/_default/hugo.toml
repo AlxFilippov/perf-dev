@@ -4,16 +4,16 @@
 
 theme = "blowfish"
 baseURL = "https://alxfilippov.github.io/perf-dev/"
-languageCode = "en"
 title = "PerfDev"
 defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = true
 
 # pluralizeListTitles = "true" # hugo function useful for non-english languages, find out more in  https://gohugo.io/getting-started/configuration/#pluralizelisttitles
 
 enableRobotsTXT = true
 summaryLength = 0
 
-buildDrafts = false
+buildDrafts = true
 buildFuture = false
 
 enableEmoji = true
@@ -69,3 +69,14 @@ enableEmoji = true
       name = 'fragmentrefs'
       type = 'fragments'
       weight = 10
+
+[languages]
+
+  [languages.en]
+    languageName = "English"
+    weight = 1
+    contentDir = "content/english"
+  [languages.ru]
+    languageName = "Russian"
+    weight = 2
+    contentDir = "content/russian"

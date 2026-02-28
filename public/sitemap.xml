@@ -1,34 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml">
-
-  <url>
-    <loc>//localhost:1313/</loc>
-    <lastmod>2026-01-07T07:07:07+01:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>//localhost:1313/posts/second-post/</loc>
-    <lastmod>2026-01-07T07:07:07+01:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>//localhost:1313/posts/</loc>
-    <lastmod>2026-01-07T07:07:07+01:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>//localhost:1313/posts/intro/</loc>
-    <lastmod>2026-01-03T07:07:07+01:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>//localhost:1313/about/</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-</urlset>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <sitemap>
+    <loc>http://localhost:1313/perf-dev/en/sitemap.xml</loc>
+    
+      <lastmod>2026-02-18T07:07:07+01:00</lastmod>
+    
+  </sitemap>
+  
+  <sitemap>
+    <loc>http://localhost:1313/perf-dev/ru/sitemap.xml</loc>
+    
+      <lastmod>2026-02-18T07:07:07+01:00</lastmod>
+    
+  </sitemap>
+  
+</sitemapindex>
