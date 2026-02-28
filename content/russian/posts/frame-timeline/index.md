@@ -115,8 +115,6 @@ LIMIT 30
 
 ##### Пояснение по таблице 
 
-Для начала пройдемся по столбцам таблицы : 
-
 * **anim_ms** время `animation` в кадре
 * **layout_ms** время `layout` в кадре
 * **sync_ms** Время синхронизации в **RenderThread** на `GPU`
@@ -156,10 +154,10 @@ GROUP BY owner_thread_name, blocked_thread, lock_details, process_name
 ORDER BY total_dur_ms DESC
 ```
 
-* Результат запроса
+##### Результат запроса
 ![lock_contention](sql_lock_contention.png)
 
-* Разбор
+##### Разбор
 > Возьмем 1 строку, т.к она имеет наибольший по времени суммарный лок
 > * При использовании ViewPoolThread идет обращение к [ResourceImpl.obtainStyledAttributes](https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/core/java/android/content/res/ResourcesImpl.java;l=1500;drc=61197364367c9e404c7da6900658f1b16c42d0da;bpv=0;bpt=1), который в свою очередь внутри вызывает [AssetManager.applyStyle](https://cs.android.com/android/platform/superproject/+/android-latest-release:frameworks/base/core/java/android/content/res/AssetManager.java;l=1266?q=AssetManager.java:1266&sq=), который под капотом имеет `synchronized` блок, поэтому при применении атрибутов с внешнего потока, может блокироваться `main thread`.
 > * Имея кодовую базу приложения можно дойти до конкретной функции в коде и оптимизировать ее. Кода приложения у меня нет, могу только предположить потенциальные места.
