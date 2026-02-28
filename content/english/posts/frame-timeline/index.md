@@ -121,15 +121,17 @@ Let's look at the columns:
 
 * **layout_ms** : layout time in the frame.
 
-* **sync_ms** : synchronization time on the RenderThread (GPU).
+* **sync_ms** : synchronization time on the RenderThread.
 
-* **draw_ms** : rendering execution time on the RenderThread (GPU).
+* **draw_ms** : rendering execution time on the RenderThread.
 
 #### Analysis
 
-* High `layout_ms` or `anim_ms` values suggest an overloaded View hierarchy.
+> **Context**: The trace was captured while scrolling the main feed of the application.
 
-* Solution: Simplify the layout, reduce View nesting, or optimize Compose recompositions.
+> * Analyze the `layout/animation` durations in the table.
+> * Given the **total frame budget** of `16.6ms` for 60Hz and a strict `8.33ms` for 120Hz, these metrics suggest that the View hierarchy is heavily overloaded or that multiple animations are being triggered simultaneously.
+> * **Potential Solution**: Optimize the View hierarchy and limit the number of concurrent animations per frame to stay within the VSync budget.
 
 #### Finding Main Thread Contentions via SQL
 
