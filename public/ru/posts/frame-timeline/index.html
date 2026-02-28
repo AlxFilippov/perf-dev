@@ -222,7 +222,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "1204"
+    "wordCount": "1199"
   }]
   </script>
 
@@ -606,7 +606,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2026-02-20T07:07:07&#43;01:00">20 февраля 2026</time><span class="px-2 text-primary-500">&middot;</span><span>1204 слов</span><span class="px-2 text-primary-500">&middot;</span><span title="Время чтения">6 минут</span>
+      <time datetime="2026-02-20T07:07:07&#43;01:00">20 февраля 2026</time><span class="px-2 text-primary-500">&middot;</span><span>1199 слов</span><span class="px-2 text-primary-500">&middot;</span><span title="Время чтения">6 минут</span>
     
 
     
@@ -1091,7 +1091,6 @@
     </span>
     
 </h5>
-<p>Для начала пройдемся по столбцам таблицы :</p>
 <ul>
 <li><strong>anim_ms</strong> время <code>animation</code> в кадре</li>
 <li><strong>layout_ms</strong> время <code>layout</code> в кадре</li>
@@ -1146,9 +1145,16 @@
 </span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;monitor contention%&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">blocked_thread</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;ru.beru.android%&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">owner_thread_name</span><span class="p">,</span><span class="w"> </span><span class="n">blocked_thread</span><span class="p">,</span><span class="w"> </span><span class="n">lock_details</span><span class="p">,</span><span class="w"> </span><span class="n">process_name</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">total_dur_ms</span><span class="w"> </span><span class="k">DESC</span></span></span></code></pre></div></div>
-<ul>
-<li>
-<p>Результат запроса
+
+<h5 class="relative group">Результат запроса
+    <div id="результат-запроса-1" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%d1%80%d0%b5%d0%b7%d1%83%d0%bb%d1%8c%d1%82%d0%b0%d1%82-%d0%b7%d0%b0%d0%bf%d1%80%d0%be%d1%81%d0%b0-1" aria-label="Якорь">#</a>
+    </span>
+    
+</h5>
 <figure><img
     class="my-0 rounded-md"
     loading="lazy"
@@ -1161,12 +1167,16 @@
     srcset="/perf-dev/ru/posts/frame-timeline/sql_lock_contention_hu_589dc6bd08a8e5fb.png 800w, /perf-dev/ru/posts/frame-timeline/sql_lock_contention_hu_f7cd8022f6324b38.png 1280w"
     sizes="(min-width: 768px) 50vw, 65vw"
     data-zoom-src="/perf-dev/ru/posts/frame-timeline/sql_lock_contention.png"></figure>
-</p>
-</li>
-<li>
-<p>Разбор</p>
-</li>
-</ul>
+
+<h5 class="relative group">Разбор
+    <div id="разбор-1" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%d1%80%d0%b0%d0%b7%d0%b1%d0%be%d1%80-1" aria-label="Якорь">#</a>
+    </span>
+    
+</h5>
 <blockquote ><p>Возьмем 1 строку, т.к она имеет наибольший по времени суммарный лок</p>
 <ul>
 <li>При использовании ViewPoolThread идет обращение к <a href="https://cs.android.com/android/platform/superproject/main/&#43;/main:frameworks/base/core/java/android/content/res/ResourcesImpl.java;l=1500;drc=61197364367c9e404c7da6900658f1b16c42d0da;bpv=0;bpt=1"  target="_blank">ResourceImpl.obtainStyledAttributes</a>, который в свою очередь внутри вызывает <a href="https://cs.android.com/android/platform/superproject/&#43;/android-latest-release:frameworks/base/core/java/android/content/res/AssetManager.java;l=1266?q=AssetManager.java:1266&amp;sq="  target="_blank">AssetManager.applyStyle</a>, который под капотом имеет <code>synchronized</code> блок, поэтому при применении атрибутов с внешнего потока, может блокироваться <code>main thread</code>.</li>
