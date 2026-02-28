@@ -1,0 +1,25 @@
+disabled = false
+languageCode = "ru"
+languageName = "Russian"
+weight = 2
+title = "Blowfish"
+
+[params]
+  displayName = "RU"
+  isoCode = "ru"
+  rtl = false
+  dateFormat = "2 January 2006"
+  # logo = "img/logo.png"
+  # secondaryLogo = "img/secondary-logo.png"
+  # description = "My awesome website"
+  # copyright = "Copy, _right?_ :thinking_face:"
+
+
+[params.author]
+ name = "Aleksandr"
+ image = "img/author.jpg"
+ headline = "Performance Engineer | Android Developer"
+ bio = "Just fun"
+ links = [
+  { linkedin = "https://www.linkedin.com/in/alfilippov/" }
+ ]

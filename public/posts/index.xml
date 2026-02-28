@@ -2,29 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Blowfish</title>
-    <link>//localhost:1313/posts/</link>
+    <link>http://localhost:1313/perf-dev/posts/</link>
     <description>Recent content in Posts on Blowfish</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2026 Aleksandr</copyright>
-    <lastBuildDate>Wed, 07 Jan 2026 07:07:07 +0100</lastBuildDate><atom:link href="//localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 18 Feb 2026 07:07:07 +0100</lastBuildDate><atom:link href="http://localhost:1313/perf-dev/posts/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Frame Timeline: Your Entry Point</title>
-      <link>//localhost:1313/posts/second-post/</link>
-      <pubDate>Wed, 07 Jan 2026 07:07:07 +0100</pubDate>
+      <title>Dictionary SQL in Perfetto</title>
+      <link>http://localhost:1313/perf-dev/posts/dict-sql-perfetto/</link>
+      <pubDate>Wed, 18 Feb 2026 07:07:07 +0100</pubDate>
       
-      <guid>//localhost:1313/posts/second-post/</guid>
+      <guid>http://localhost:1313/perf-dev/posts/dict-sql-perfetto/</guid>
       <description></description>
       
     </item>
     
     <item>
-      <title>!Performance ?</title>
-      <link>//localhost:1313/posts/intro/</link>
+      <title>Overview Frame Timeline</title>
+      <link>http://localhost:1313/perf-dev/posts/frame-timeline/</link>
+      <pubDate>Wed, 07 Jan 2026 07:07:07 +0100</pubDate>
+      
+      <guid>http://localhost:1313/perf-dev/posts/frame-timeline/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>!Performance</title>
+      <link>http://localhost:1313/perf-dev/posts/intro/</link>
       <pubDate>Sat, 03 Jan 2026 07:07:07 +0100</pubDate>
       
-      <guid>//localhost:1313/posts/intro/</guid>
+      <guid>http://localhost:1313/perf-dev/posts/intro/</guid>
       <description>Why do we even care about performance? It’s crucial to understand: it’s not just about “polishing” search algorithms or making sorting a bit faster.</description>
       
     </item>
