@@ -6,8 +6,8 @@ draft = false
 +++
 
 ## Документация
-> [Trace.beginSection/endSection](https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:tracing/tracing/src/androidMain/kotlin/androidx/tracing/Trace.android.kt;l=123)
-> [Trace.beginAsyncSection/endAsyncSection](https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:tracing/tracing/src/androidMain/kotlin/androidx/tracing/Trace.android.kt;l=169)
+> * [Trace.beginSection/endSection](https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:tracing/tracing/src/androidMain/kotlin/androidx/tracing/Trace.android.kt;l=123)
+> * [Trace.beginAsyncSection/endAsyncSection](https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:tracing/tracing/src/androidMain/kotlin/androidx/tracing/Trace.android.kt;l=169)
 
 ## История
 
