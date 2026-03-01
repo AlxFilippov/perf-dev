@@ -29,5 +29,15 @@
       
     </item>
     
+    <item>
+      <title>Как я потратил несколько часов на поиск слайсов с Trace.asyncBeginSection</title>
+      <link>http://localhost:1313/perf-dev/ru/posts/trace-async/</link>
+      <pubDate>Sun, 15 Feb 2026 07:07:07 +0100</pubDate>
+      
+      <guid>http://localhost:1313/perf-dev/ru/posts/trace-async/</guid>
+      <description>Руководство по поиску асинхронных меток в Perfetto SQL. Разбираем разницу между thread_track и process_track, исправляем пустые таблицы в Macrobenchmark и учимся правильно работать с Trace.beginAsyncSection</description>
+      
+    </item>
+    
   </channel>
 </rss>
