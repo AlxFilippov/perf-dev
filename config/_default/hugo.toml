@@ -3,7 +3,7 @@
 # https://blowfish.page/docs/getting-started/
 
 theme = "blowfish"
-baseURL = "https://alxfilippov.github.io/perf-dev/"
+baseURL = "https://perf-dev.com/"
 title = "PerfDev"
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = true
@@ -13,12 +13,12 @@ defaultContentLanguageInSubdir = true
 enableRobotsTXT = true
 summaryLength = 0
 
-buildDrafts = true
+buildDrafts = false
 buildFuture = false
 
 enableEmoji = true
 
-# googleAnalytics = "G-XXXXXXXXX"
+googleAnalytics = "G-1RFXW9H9YF"
 
 [pagination]
   pagerSize = 100
