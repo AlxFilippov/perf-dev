@@ -48,7 +48,7 @@ This is an Android tool that provides information about the sequence of frames a
 
 ## What Affects Frame Duration?
 
-Every performance issue has an "address" — the specific place where it all started. 
+Every performance issue has an "source" — the specific place where it all started. 
 
 ### Breakdown
 
@@ -76,9 +76,8 @@ In most cases, it’s best to analyze the system **Bottom-Up**. This means analy
 
 #### How to Find Problematic Areas?
 
-* If you see obvious "red" spots on the **Frame Timeline**, jump straight into a detailed search.
-* If you prefer to spend your workday scrolling the timeline back and forth and diving into every single frame — I support that too!
-However, for the fast and surgical approach, we use **Perfetto SQL**. By querying Perfetto’s data tables, we can generate structured reports for deep analysis. 
+* If you spot obvious "red" areas on the Frame Timeline, you can jump straight into a more surgical and detailed search. Visual indicators aren't always glaringly obvious, and sometimes the sheer volume of data is overwhelming. Of course, if you’d prefer to spend your entire workday scrolling the timeline back and forth and diving into every single frame—I support that too!
+* But for those looking for a faster, more granular approach: enter Perfetto SQL. By querying Perfetto’s underlying data tables, you can generate structured reports of the specific parameters and values needed for deep-dive analysis 
 
 #### What Interests Us in the App UI Layer? 
 
