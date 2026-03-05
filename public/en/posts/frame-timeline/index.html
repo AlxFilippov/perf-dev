@@ -222,7 +222,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "1337"
+    "wordCount": "1368"
   }]
   </script>
 
@@ -669,7 +669,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2026-02-20T07:07:07&#43;01:00">20 February 2026</time><span class="px-2 text-primary-500">&middot;</span><span>1337 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">7 mins</span>
+      <time datetime="2026-02-20T07:07:07&#43;01:00">20 February 2026</time><span class="px-2 text-primary-500">&middot;</span><span>1368 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">7 mins</span>
     
 
     
@@ -977,7 +977,7 @@ This guide assumes you have a basic familiarity with Android traces and <code>pe
     </span>
     
 </h2>
-<p>Every performance issue has an &ldquo;address&rdquo; — the specific place where it all started.</p>
+<p>Every performance issue has an &ldquo;source&rdquo; — the specific place where it all started.</p>
 
 <h3 class="relative group">Breakdown
     <div id="breakdown" class="anchor"></div>
@@ -1085,9 +1085,8 @@ This guide assumes you have a basic familiarity with Android traces and <code>pe
     
 </h4>
 <ul>
-<li>If you see obvious &ldquo;red&rdquo; spots on the <strong>Frame Timeline</strong>, jump straight into a detailed search.</li>
-<li>If you prefer to spend your workday scrolling the timeline back and forth and diving into every single frame — I support that too!
-However, for the fast and surgical approach, we use <strong>Perfetto SQL</strong>. By querying Perfetto’s data tables, we can generate structured reports for deep analysis.</li>
+<li>If you spot obvious &ldquo;red&rdquo; areas on the Frame Timeline, you can jump straight into a more surgical and detailed search. Visual indicators aren&rsquo;t always glaringly obvious, and sometimes the sheer volume of data is overwhelming. Of course, if you’d prefer to spend your entire workday scrolling the timeline back and forth and diving into every single frame—I support that too!</li>
+<li>But for those looking for a faster, more granular approach: enter Perfetto SQL. By querying Perfetto’s underlying data tables, you can generate structured reports of the specific parameters and values needed for deep-dive analysis</li>
 </ul>
 
 <h4 class="relative group">What Interests Us in the App UI Layer?
