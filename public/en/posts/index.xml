@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Blowfish</title>
-    <link>http://localhost:1313/perf-dev/en/posts/</link>
+    <link>http://localhost:1313/en/posts/</link>
     <description>Recent content in Posts on Blowfish</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2026 Aleksandr</copyright>
-    <lastBuildDate>Fri, 20 Feb 2026 07:07:07 +0100</lastBuildDate><atom:link href="http://localhost:1313/perf-dev/en/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 Feb 2026 07:07:07 +0100</lastBuildDate><atom:link href="http://localhost:1313/en/posts/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Overview Frame Timeline</title>
-      <link>http://localhost:1313/perf-dev/en/posts/frame-timeline/</link>
+      <link>http://localhost:1313/en/posts/frame-timeline/</link>
       <pubDate>Fri, 20 Feb 2026 07:07:07 +0100</pubDate>
       
-      <guid>http://localhost:1313/perf-dev/en/posts/frame-timeline/</guid>
+      <guid>http://localhost:1313/en/posts/frame-timeline/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Dict SQL Perfetto</title>
-      <link>http://localhost:1313/perf-dev/en/posts/dict-sql-perfetto/</link>
+      <link>http://localhost:1313/en/posts/dict-sql-perfetto/</link>
       <pubDate>Wed, 18 Feb 2026 07:07:07 +0100</pubDate>
       
-      <guid>http://localhost:1313/perf-dev/en/posts/dict-sql-perfetto/</guid>
+      <guid>http://localhost:1313/en/posts/dict-sql-perfetto/</guid>
       <description></description>
       
     </item>

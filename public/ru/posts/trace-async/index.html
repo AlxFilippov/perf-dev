@@ -4,7 +4,7 @@
   dir="ltr"
   class="scroll-smooth"
   data-default-appearance="light"
-  data-auto-appearance="true"><head><script src="/perf-dev/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=perf-dev/livereload" data-no-instant defer></script>
+  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
   
     <meta http-equiv="content-language" content="ru">
@@ -26,7 +26,7 @@
   
   
   
-  <link rel="canonical" href="http://localhost:1313/perf-dev/ru/posts/trace-async/">
+  <link rel="canonical" href="http://localhost:1313/ru/posts/trace-async/">
   
 
   
@@ -44,7 +44,7 @@
   
 
   
-  <meta property="og:url" content="http://localhost:1313/perf-dev/ru/posts/trace-async/">
+  <meta property="og:url" content="http://localhost:1313/ru/posts/trace-async/">
   <meta property="og:site_name" content="Blowfish">
   <meta property="og:title" content="Как я потратил несколько часов на поиск слайсов с Trace.asyncBeginSection">
   <meta property="og:description" content="Руководство по поиску асинхронных меток в Perfetto SQL. Разбираем разницу между thread_track и process_track, исправляем пустые таблицы в Macrobenchmark и учимся правильно работать с Trace.beginAsyncSection">
@@ -102,14 +102,14 @@
   <link
     type="text/css"
     rel="stylesheet"
-    href="/perf-dev/css/main.bundle.min.f41394a5c0e10c1cf8a65888f77e21ec279d86842cd26f2d94fc9956dfaa3240ba32a773ef895535ec8fa317a1eeeaeeecb64add401d2082d37bf1031716a0f9.css"
+    href="/css/main.bundle.min.f41394a5c0e10c1cf8a65888f77e21ec279d86842cd26f2d94fc9956dfaa3240ba32a773ef895535ec8fa317a1eeeaeeecb64add401d2082d37bf1031716a0f9.css"
     integrity="sha512-9BOUpcDhDBz4pliI934h7CedhoQs0m8tlPyZVt&#43;qMkC6Mqdz74lVNeyPoxeh7uru7LZK3UAdIILTe/EDFxag&#43;Q==">
 
   
   
   <script
     type="text/javascript"
-    src="/perf-dev/js/appearance.min.6f41174b3a05b680820fe08cadbfa5fb7a7ca347b76a0955cdc68b9d8aca1ce24f0547e138cea33bcc7904d551a90afcb1cc7f2d9fe8557075d501419046c08c.js"
+    src="/js/appearance.min.6f41174b3a05b680820fe08cadbfa5fb7a7ca347b76a0955cdc68b9d8aca1ce24f0547e138cea33bcc7904d551a90afcb1cc7f2d9fe8557075d501419046c08c.js"
     integrity="sha512-b0EXSzoFtoCCD&#43;CMrb&#43;l&#43;3p8o0e3aglVzcaLnYrKHOJPBUfhOM6jO8x5BNVRqQr8scx/LZ/oVXB11QFBkEbAjA=="></script>
   
   
@@ -118,7 +118,7 @@
   
   
     
-    <script src="/perf-dev/lib/zoom/zoom.min.umd.a527109b68c082a70f3697716dd72a9d5aa8b545cf800cecbbc7399f2ca6f6e0ce3e431f2062b48bbfa47c9ea42822714060bef309be073f49b9c0e30d318d7b.js" integrity="sha512-pScQm2jAgqcPNpdxbdcqnVqotUXPgAzsu8c5nyym9uDOPkMfIGK0i7&#43;kfJ6kKCJxQGC&#43;8wm&#43;Bz9JucDjDTGNew=="></script>
+    <script src="/lib/zoom/zoom.min.umd.a527109b68c082a70f3697716dd72a9d5aa8b545cf800cecbbc7399f2ca6f6e0ce3e431f2062b48bbfa47c9ea42822714060bef309be073f49b9c0e30d318d7b.js" integrity="sha512-pScQm2jAgqcPNpdxbdcqnVqotUXPgAzsu8c5nyym9uDOPkMfIGK0i7&#43;kfJ6kKCJxQGC&#43;8wm&#43;Bz9JucDjDTGNew=="></script>
   
 
   
@@ -141,7 +141,7 @@
       defer
       type="text/javascript"
       id="script-bundle"
-      src="/perf-dev/js/main.bundle.min.174bcf70e6e1263b171d57722e12e947c094a38b89ba10267b8744db900c25af6426a478c44554553ac180127863a0014c61409cb86b8052ec370dd7cc92d593.js"
+      src="/js/main.bundle.min.174bcf70e6e1263b171d57722e12e947c094a38b89ba10267b8744db900c25af6426a478c44554553ac180127863a0014c61409cb86b8052ec370dd7cc92d593.js"
       integrity="sha512-F0vPcObhJjsXHVdyLhLpR8CUo4uJuhAme4dE25AMJa9kJqR4xEVUVTrBgBJ4Y6ABTGFAnLhrgFLsNw3XzJLVkw=="
       data-copy="Копировать"
       data-copied="Скопировано"></script>
@@ -150,7 +150,7 @@
   
   
 
-<script src="/perf-dev/lib/jquery/jquery.slim.min.b0dca576e87d7eaa5850ae4e61759c065786cdb6489d68fcc82240539eebd5da522bdb4fda085ffd245808c8fe2acb2516408eb774ef26b5f6015fc6737c0ea8.js" integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj&#43;KsslFkCOt3TvJrX2AV/Gc3wOqA=="></script>
+<script src="/lib/jquery/jquery.slim.min.b0dca576e87d7eaa5850ae4e61759c065786cdb6489d68fcc82240539eebd5da522bdb4fda085ffd245808c8fe2acb2516408eb774ef26b5f6015fc6737c0ea8.js" integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj&#43;KsslFkCOt3TvJrX2AV/Gc3wOqA=="></script>
 
 
 
@@ -196,10 +196,10 @@
 
   
   
-    <link rel="apple-touch-icon" sizes="180x180" href="/perf-dev/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/perf-dev/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/perf-dev/favicon-16x16.png">
-    <link rel="manifest" href="/perf-dev/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
   
 
   
@@ -212,7 +212,7 @@
     "headline": "Как я потратил несколько часов на поиск слайсов с Trace.asyncBeginSection",
     
     "inLanguage": "ru",
-    "url" : "http://localhost:1313/perf-dev/ru/posts/trace-async/",
+    "url" : "http://localhost:1313/ru/posts/trace-async/",
     "author" : {
       "@type": "Person",
       "name": "Aleksandr"
@@ -306,7 +306,7 @@
   <div class="flex flex-1 items-center justify-between">
     <nav class="flex space-x-3">
       
-        <a href="/perf-dev/ru/" class="text-base font-medium">
+        <a href="/ru/" class="text-base font-medium">
           Blowfish
         </a>
       
@@ -407,7 +407,7 @@
 
 <script
   type="text/javascript"
-  src="/perf-dev/js/background-blur.min.605b3b942818f0ab5a717ae446135ec46b8ee5a2ad12ae56fb90dc2a76ce30c388f9fec8bcc18db15bd47e3fa8a09d779fa12aa9c184cf614a315bc72c6c163d.js"
+  src="/js/background-blur.min.605b3b942818f0ab5a717ae446135ec46b8ee5a2ad12ae56fb90dc2a76ce30c388f9fec8bcc18db15bd47e3fa8a09d779fa12aa9c184cf614a315bc72c6c163d.js"
   integrity="sha512-YFs7lCgY8KtacXrkRhNexGuO5aKtEq5W&#43;5DcKnbOMMOI&#43;f7IvMGNsVvUfj&#43;ooJ13n6EqqcGEz2FKMVvHLGwWPQ=="
   data-blur-id="menu-blur"></script>
 
@@ -566,8 +566,8 @@
         width="96"
         height="96"
         alt="Aleksandr"
-        src="/perf-dev/img/author_hu_ee898aee071a5f3b.jpg"
-        data-zoom-src="/perf-dev/img/author_hu_dc7263cee0839272.jpg">
+        src="/img/author_hu_ee898aee071a5f3b.jpg"
+        data-zoom-src="/img/author_hu_dc7263cee0839272.jpg">
     
   
   <div class="place-self-center">
@@ -842,7 +842,7 @@
         
         <script
           type="text/javascript"
-          src="/perf-dev/js/page.min.54b6f4371722649edbe871e431d8670d670878c22be8f36e229fe53cc9b786fe25a834def5e6de621f7a3e37b72bc8cd73839aa5ed907ed6cbd45cd3e1b0fa20.js"
+          src="/js/page.min.54b6f4371722649edbe871e431d8670d670878c22be8f36e229fe53cc9b786fe25a834def5e6de621f7a3e37b72bc8cd73839aa5ed907ed6cbd45cd3e1b0fa20.js"
           integrity="sha512-VLb0NxciZJ7b6HHkMdhnDWcIeMIr6PNuIp/lPMm3hv4lqDTe9ebeYh96Pje3K8jNc4Oape2QftbL1FzT4bD6IA=="
           data-oid="views_posts/trace-async/index.md"
           data-oid-likes="likes_posts/trace-async/index.md"></script>
@@ -866,7 +866,7 @@
           
             <a
               class="flex text-right text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
-              href="/perf-dev/ru/posts/dict-sql-perfetto/">
+              href="/ru/posts/dict-sql-perfetto/">
               <span class="leading-6">
                 Справочник SQL Perfetto&ensp;<span class="inline-block rtl:rotate-180">&rarr;</span>
               </span>
@@ -948,7 +948,7 @@
   
   <script
     type="text/javascript"
-    src="/perf-dev/js/process.min.ee03488f19c93c2efb199e2e3014ea5f3cb2ce7d45154adb3399a158cac27ca52831db249ede5bb602700ef87eb02434139de0858af1818ab0fb4182472204a4.js"
+    src="/js/process.min.ee03488f19c93c2efb199e2e3014ea5f3cb2ce7d45154adb3399a158cac27ca52831db249ede5bb602700ef87eb02434139de0858af1818ab0fb4182472204a4.js"
     integrity="sha512-7gNIjxnJPC77GZ4uMBTqXzyyzn1FFUrbM5mhWMrCfKUoMdsknt5btgJwDvh&#43;sCQ0E53ghYrxgYqw&#43;0GCRyIEpA=="></script>
   
   
@@ -956,7 +956,7 @@
 <div
   id="search-wrapper"
   class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh] z-500"
-  data-url="http://localhost:1313/perf-dev/ru/">
+  data-url="http://localhost:1313/ru/">
   <div
     id="search-modal"
     class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800">

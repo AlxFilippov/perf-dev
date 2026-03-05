@@ -3,67 +3,73 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
-    <loc>http://localhost:1313/perf-dev/ru/</loc>
+    <loc>http://localhost:1313/ru/</loc>
     <lastmod>2026-02-20T07:07:07+01:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
       rel="alternate"
       hreflang="en"
-      href="http://localhost:1313/perf-dev/en/"
+      href="http://localhost:1313/en/"
     />
     <xhtml:link
       rel="alternate"
       hreflang="ru"
-      href="http://localhost:1313/perf-dev/ru/"
+      href="http://localhost:1313/ru/"
     />
   </url>
   <url>
-    <loc>http://localhost:1313/perf-dev/ru/posts/</loc>
+    <loc>http://localhost:1313/ru/posts/</loc>
     <lastmod>2026-02-20T07:07:07+01:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
       rel="alternate"
       hreflang="en"
-      href="http://localhost:1313/perf-dev/en/posts/"
+      href="http://localhost:1313/en/posts/"
     />
     <xhtml:link
       rel="alternate"
       hreflang="ru"
-      href="http://localhost:1313/perf-dev/ru/posts/"
+      href="http://localhost:1313/ru/posts/"
     />
   </url>
   <url>
-    <loc>http://localhost:1313/perf-dev/ru/posts/frame-timeline/</loc>
+    <loc>http://localhost:1313/ru/posts/frame-timeline/</loc>
     <lastmod>2026-02-20T07:07:07+01:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
       rel="alternate"
       hreflang="en"
-      href="http://localhost:1313/perf-dev/en/posts/frame-timeline/"
+      href="http://localhost:1313/en/posts/frame-timeline/"
     />
     <xhtml:link
       rel="alternate"
       hreflang="ru"
-      href="http://localhost:1313/perf-dev/ru/posts/frame-timeline/"
+      href="http://localhost:1313/ru/posts/frame-timeline/"
     />
   </url>
   <url>
-    <loc>http://localhost:1313/perf-dev/ru/posts/dict-sql-perfetto/</loc>
+    <loc>http://localhost:1313/ru/posts/dict-sql-perfetto/</loc>
     <lastmod>2026-02-18T07:07:07+01:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
       rel="alternate"
       hreflang="en"
-      href="http://localhost:1313/perf-dev/en/posts/dict-sql-perfetto/"
+      href="http://localhost:1313/en/posts/dict-sql-perfetto/"
     />
     <xhtml:link
       rel="alternate"
       hreflang="ru"
-      href="http://localhost:1313/perf-dev/ru/posts/dict-sql-perfetto/"
+      href="http://localhost:1313/ru/posts/dict-sql-perfetto/"
     />
+  </url>
+  <url>
+    <loc>http://localhost:1313/ru/posts/trace-async/</loc>
+    <lastmod>2026-02-15T07:07:07+01:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>
