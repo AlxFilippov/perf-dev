@@ -2,14 +2,14 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <sitemap>
-    <loc>http://localhost:1313/perf-dev/en/sitemap.xml</loc>
+    <loc>http://localhost:1313/en/sitemap.xml</loc>
     
       <lastmod>2026-02-20T07:07:07+01:00</lastmod>
     
   </sitemap>
   
   <sitemap>
-    <loc>http://localhost:1313/perf-dev/ru/sitemap.xml</loc>
+    <loc>http://localhost:1313/ru/sitemap.xml</loc>
     
       <lastmod>2026-02-20T07:07:07+01:00</lastmod>
     
