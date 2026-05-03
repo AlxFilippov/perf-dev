@@ -1,7 +1,11 @@
 +++
-title = 'Dict SQL Perfetto'
+title = 'Perfetto SQL Reference: Ready-to-Use Queries for Android Trace Analysis'
 date = 2026-02-18T07:07:07+01:00
 draft = false
+summary = "A living cheat sheet of Perfetto SQL queries for Android performance analysis: syncFrameState latency, jank detection, monitor contention grouping, and more."
+tags = ["perfetto", "sql", "android", "jank", "monitor-contention", "syncFrameState", "performance", "frame-timeline"]
+categories = ["Android Performance"]
+series = ["Android Performance Analysis"]
 +++
 
 ### Intro

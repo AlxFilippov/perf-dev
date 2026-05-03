@@ -1,7 +1,11 @@
 +++
-title = 'Overview Frame Timeline'
+title = 'Frame Timeline: Android Performance Analysis Entry Point'
 date = 2026-02-20T07:07:07+01:00
 draft = false
+summary = "Learn how to use Frame Timeline in Perfetto to detect jank, analyze traversal and RenderThread duration, and hunt Main Thread lock contentions with SQL queries."
+tags = ["frame-timeline", "perfetto", "android", "jank", "renderthread", "performance", "sql", "choreographer", "surfaceflinger"]
+categories = ["Android Performance"]
+series = ["Android Performance Analysis"]
 +++
 
 # Frame Timeline: An Entry Point for App Performance Analysis

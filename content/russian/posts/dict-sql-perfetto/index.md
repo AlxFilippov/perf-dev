@@ -1,7 +1,11 @@
 +++
-title = 'Справочник SQL Perfetto'
+title = 'Справочник Perfetto SQL: готовые запросы для анализа Android-трейсов'
 date = 2026-02-18T07:07:07+01:00
 draft = false
+summary = "Набор готовых Perfetto SQL запросов для анализа производительности Android: задержка syncFrameState, поиск джанка, анализ блокировок потоков и monitor contention."
+tags = ["perfetto", "sql", "android", "jank", "monitor-contention", "syncFrameState", "производительность", "frame-timeline"]
+categories = ["Android Performance"]
+series = ["Анализ производительности Android"]
 +++
 
 ### Интро

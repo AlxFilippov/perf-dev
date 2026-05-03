@@ -1,8 +1,11 @@
 +++
-title = 'Как я потратил несколько часов на поиск слайсов с Trace.asyncBeginSection'
-summary = 'Руководство по поиску асинхронных меток в Perfetto SQL. Разбираем разницу между thread_track и process_track, исправляем пустые таблицы в Macrobenchmark и учимся правильно работать с Trace.beginAsyncSection'
+title = 'Trace.beginAsyncSection в Perfetto SQL: почему слайсы не находятся через thread_track'
+summary = "Разбираем разницу между thread_track и process_track в Perfetto SQL. Почему асинхронные метки Trace.beginAsyncSection не видны в Macrobenchmark и как это исправить."
 date = 2026-02-15T07:07:07+01:00
 draft = false
+tags = ["perfetto", "sql", "android", "macrobenchmark", "trace", "async", "производительность", "thread-track", "process-track"]
+categories = ["Android Performance"]
+series = ["Анализ производительности Android"]
 +++
 
 ## Документация
