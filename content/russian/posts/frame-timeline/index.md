@@ -1,7 +1,11 @@
 +++
-title = 'Обзор Frame Timeline'
+title = 'Frame Timeline: входная точка анализа производительности Android'
 date = 2026-02-20T07:07:07+01:00
 draft = false
+summary = "Как использовать Frame Timeline в Perfetto для поиска джанка, анализа traversal и RenderThread и поиска блокировок Main Thread с помощью Perfetto SQL."
+tags = ["frame-timeline", "perfetto", "android", "jank", "renderthread", "производительность", "sql", "choreographer", "surfaceflinger"]
+categories = ["Android Performance"]
+series = ["Анализ производительности Android"]
 +++
 
 # Frame Timeline как входная точка анализа производительности приложения

@@ -2,16 +2,16 @@ disabled = false
 languageCode = "en"
 languageName = "English"
 weight = 1
-title = "Blowfish"
+title = "PerfDev"
 
 [params]
   displayName = "EN"
   isoCode = "en"
   rtl = false
   dateFormat = "2 January 2006"
+  description = "Articles about Android performance analysis: Perfetto, Frame Timeline, Macrobenchmark, and UI profiling."
   # logo = "img/logo.png"
   # secondaryLogo = "img/secondary-logo.png"
-  # description = "My awesome website"
   # copyright = "Copy, _right?_ :thinking_face:"
 
 
